@@ -25,7 +25,7 @@
 <div class="section"><h2>Next steps</h2><div class="muted">1. Import verified BRTC route geometry and stops.<br>2. Add official departure schedules and service days.<br>3. Check that each route follows the actual bus path.<br>4. Enable route search and journey planning after the dataset is complete.</div></div>
 <div class="footer">Map tiles: OpenFreeMap. Geographic data: © OpenStreetMap contributors. Only mapped stop features are shown. A colored pin means the stop name appears in the BRTC route schedule; a gray pin means the route-to-stop association is not confirmed. Lines are estimates, not GPS tracks.</div>
 </aside>
-<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = stop name listed in BRTC schedule<br>Gray pins = mapped OSM bus stop; route link unverified<br>Dashed lines = estimated roads, not GPS traces</div></main>
+<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = OSM stop with a BRTC-listed name (boarding bay still to confirm)<br>Gray pins = mapped stop; BRTC route link unverified<br>Dashed lines = estimated roads, not GPS traces</div></main>
 </div>
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
@@ -49,7 +49,7 @@ map.on('load',()=>{
   .then(data=>{
    addData(data);
    // Do not wait for the routing server before making the map usable.
-   statusEl.textContent='Loaded '+data.features.length+' stop/route records. Drawing colored road paths in the background…';
+   statusEl.textContent='Loaded '+data.features.length+' route-stop records. Only mapped stop features are shown; route lines are checked separately…';
    statusEl.className='status ok';
    setTimeout(()=>addRoadPaths(data.features).catch(e=>{console.error(e);statusEl.textContent='Route stops are loaded, but some road lines could not be traced. The map remains usable; refresh later to retry.';statusEl.className='status';}),150);
   })
