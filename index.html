@@ -44,7 +44,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson?v=20261014-verified-stops-v1')
+ fetch('./data/brtc-routes.geojson?v=20261014-verified-stops-v2')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
@@ -75,7 +75,7 @@ function addData(data){
  const bounds=new maplibregl.LngLatBounds();let count=0;
  for(const f of data.features){const g=f.geometry;if(!g)continue;function walk(c){if(typeof c[0]==='number'&&typeof c[1]==='number'){bounds.extend(c);count++;}else if(Array.isArray(c))c.forEach(walk);}walk(g.coordinates||[]);}
  if(count&& !bounds.isEmpty())map.fitBounds(bounds,{padding:70,maxZoom:14,duration:800});
- showRouteCards([...data.features,...autoRoadFeatures]);statusEl.textContent='Loaded '+data.features.length+' route/stop features. Road paths and schedules need verification before travel.';statusEl.className='status ok';
+ showRouteCards([...data.features,...autoRoadFeatures]);const mappedCount=data.features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified===true&&f.geometry?.type==='Point').length;const hiddenCount=data.features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified!==true).length;statusEl.textContent='Loaded '+data.features.length+' route-stop records: '+mappedCount+' mapped stop records shown; '+hiddenCount+' unverified stop locations hidden until matched to a real stop or terminal.';statusEl.className='status ok';
  map.on('click','brtc-points',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
  map.on('click','brtc-lines',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
  for(const layer of ['brtc-points','brtc-lines']){map.on('mouseenter',layer,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',layer,()=>map.getCanvas().style.cursor='');}
@@ -151,6 +151,8 @@ async function addRoadPaths(features){
    stops.every(f=>f.geometry?.type==='Point' && f.properties?.coordinate_verified===true && f.properties?.route_stop_verified===true)
   );
  const roadFeatures=[];
+ const mappedStopCount=features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified===true&&f.geometry?.type==='Point').length;
+ const hiddenStopCount=features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified!==true).length;
  // Keep the map usable on mobile even if an external router is slow.
  statusEl.textContent='Checking '+groups.size+' routes. Only routes with every stop mapped and listed in the BRTC route information can receive an estimated road line.';
  statusEl.className='status ok';
@@ -216,7 +218,7 @@ async function addRoadPaths(features){
  }
  showRouteCards([...features,...roadFeatures]);
  if(successCount){
-  statusEl.textContent='Reviewed '+groups.size+' route records; generated '+successCount+' estimated road line(s). '+(groups.size-routeEntries.length)+' route(s) have at least one stop whose exact location or route association is not verified, so their lines are hidden. '+(errors.length?errors.length+' additional line request(s) failed. ':'')+'A dashed line is an estimate, not an official BRTC GPS trace.';
+  statusEl.textContent='Reviewed '+groups.size+' routes: '+mappedStopCount+' mapped stop records shown and '+hiddenStopCount+' unverified stop locations hidden. Generated '+successCount+' estimated road line(s); '+(groups.size-routeEntries.length)+' route(s) have unverified stops, so their line is withheld. '+(errors.length?errors.length+' additional line request(s) failed. ':'')+'A dashed line is an estimate, not an official BRTC GPS trace.';
   statusEl.className=errors.length?'status':'status ok';
  }else{
   statusEl.textContent='No road lines could be created. The stop names remain listed, but route lines are hidden until all route stop locations and route associations can be verified.';
