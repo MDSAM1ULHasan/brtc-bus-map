@@ -42,3 +42,14 @@ Add the exact mapped bus-stop or bus-station feature coordinate from OpenStreetM
 ## Deployment
 
 GitHub Actions deploys changes to the `main` branch through `.github/workflows/deploy-pages.yml`.
+
+## Stop departures and trip timeline UI
+
+- Tap a mapped bus-stop marker to open a mobile-style departures sheet.
+- The departures sheet shows BRTC services linked to that stop in the loaded route dataset. Stop-specific times appear only where a time is present in the published timetable data.
+- Tap a service to see its stop-by-stop timeline, Bengali stop names, published times and whether each stop is mapped or still lacks a confirmed coordinate.
+- Times in the interface are **scheduled times only**. “Scheduled in …” is calculated against the device clock and is not a live arrival prediction. A past timetable time does not mean the bus actually departed.
+- The prototype is BRTC-only. Private operators such as those shown in Google Maps screenshots are not included because verified route/timetable data for those operators has not been loaded.
+- No live GPS, GTFS-Realtime or Google Maps transit feed is connected. No real-time bus positions or live ETAs are claimed.
+
+Schedule times are transcribed from the BRTC-published passenger transport/Citizen Charter information. The publication contains dated entries and is not proof that a particular service is operating today. Verify the timetable with BRTC before travel.
