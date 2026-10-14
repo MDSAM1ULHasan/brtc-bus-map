@@ -10,6 +10,15 @@
 *{box-sizing:border-box}html{min-height:100%;-webkit-text-size-adjust:100%}body{margin:0;min-height:100%;overflow-x:hidden}header{height:auto;min-height:66px;padding:14px 20px;background:#102d24;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header h1{font-size:19px;margin:0}header p{margin:4px 0 0;font-size:12px;color:#c9ddd4}.pill{font-size:12px;background:#214638;padding:6px 10px;border-radius:99px;white-space:nowrap}
 .app{display:grid;grid-template-columns:340px minmax(0,1fr);height:calc(100vh - 66px);min-height:500px}.sidebar{overflow:auto;background:#fff;border-right:1px solid #dfe6e2;padding:18px;min-width:0}.mapwrap{position:relative;min-width:0;min-height:0}#map{width:100%;height:100%;min-height:300px;background:#e8eee9}.section{margin:0 0 18px}.section h2{font-size:14px;margin:0 0 8px}.muted{font-size:12px;color:#65736e;line-height:1.5}.field{width:100%;padding:10px 11px;border:1px solid #cad6d0;border-radius:9px;font:inherit;background:white;margin:5px 0 8px;min-width:0}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:0;border-radius:9px;background:#176b4a;color:white;font-weight:650;cursor:pointer;font:inherit;font-size:13px}.btn.secondary{background:#e8f2ec;color:#145b40}.btn.full{width:100%}.route-list{display:grid;gap:8px}.route-card{border:1px solid #dfe6e2;border-radius:10px;padding:11px;cursor:pointer;background:#fff;white-space:normal;overflow-wrap:anywhere}.route-card:hover{border-color:#176b4a}.route-card strong{font-size:13px;display:block}.route-card small{color:#65736e;font-size:11px}.line-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;flex:0 0 auto}.status{padding:10px;background:#fff6de;border:1px solid #f1dfaa;color:#6b5416;border-radius:9px;font-size:12px;line-height:1.5}.status.ok{background:#eaf7ef;border-color:#b9e2c6;color:#1d6335}#details{font-size:12px;line-height:1.6;overflow-wrap:anywhere}.legend{position:absolute;left:12px;bottom:22px;max-width:calc(100% - 24px);background:#fff;padding:9px 11px;border-radius:9px;box-shadow:0 1px 6px #0002;font-size:11px;color:#34443c;pointer-events:none}.maplibregl-popup-content{font:13px system-ui;line-height:1.45;border-radius:10px;max-width:min(260px,80vw);overflow-wrap:anywhere}.footer{font-size:10px;color:#7c8983;line-height:1.5}.fileinput{font-size:12px;width:100%}
 @media(max-width:760px){header{padding:12px 14px;align-items:flex-start}header h1{font-size:16px;line-height:1.3}header p{font-size:11px}.pill{font-size:10px;white-space:normal;max-width:124px;text-align:center}.app{display:flex;flex-direction:column;width:100%;height:auto;min-height:calc(100dvh - 66px)}.mapwrap{order:0;display:block;width:100%;height:46vh;height:46dvh;min-height:300px;max-height:520px;flex:0 0 auto}.mapwrap #map{width:100%;height:100%;min-height:300px}.sidebar{order:1;overflow:visible;width:100%;min-width:0;border-right:0;border-top:1px solid #dfe6e2;padding:14px}.section{margin-bottom:16px}.maplibregl-ctrl-top-right{top:8px;right:8px}.maplibregl-ctrl-bottom-right{bottom:34px;right:8px}.legend{left:8px;bottom:8px;font-size:10px;padding:7px 8px}.route-card{padding:12px}.route-card strong{font-size:14px}}
+
+.transit-sheet{position:absolute;z-index:20;left:12px;right:12px;bottom:12px;max-height:68%;display:flex;flex-direction:column;background:#111827;color:#f8fafc;border-radius:20px;box-shadow:0 8px 32px #0005;overflow:hidden;border:1px solid #374151}
+.transit-sheet[hidden]{display:none!important}.sheet-handle{width:42px;height:4px;background:#6b7280;border-radius:99px;margin:10px auto 7px;flex:0 0 auto}
+.sheet-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:4px 16px 12px}.sheet-title{font-size:20px;font-weight:650;line-height:1.25}.sheet-subtitle{font-size:12px;color:#cbd5e1;margin-top:5px;line-height:1.4}.sheet-close{border:0;border-radius:50%;width:38px;height:38px;flex:0 0 38px;background:#26303d;color:#fff;font-size:23px;cursor:pointer}
+.sheet-tabs{display:flex;gap:8px;padding:0 14px 12px;border-bottom:1px solid #374151}.sheet-tab{background:#26303d;color:#d1d5db;border:0;border-radius:18px;padding:9px 13px;font-size:12px;cursor:pointer}.sheet-tab.active{background:#0e7490;color:#fff}.sheet-body{overflow:auto;overscroll-behavior:contain;padding:4px 14px 14px;min-height:70px}.sheet-notice{padding:10px 12px;margin:8px 0 12px;background:#1f2937;border-radius:10px;color:#cbd5e1;font-size:11px;line-height:1.45;border:1px solid #374151}
+.departures-heading{font-size:13px;font-weight:700;margin:10px 2px 7px;color:#e5e7eb}.departure-row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:start;width:100%;border:0;border-bottom:1px solid #374151;background:transparent;color:inherit;text-align:left;padding:13px 2px;cursor:pointer}.departure-row:active{background:#26303d}.bus-icon{font-size:20px;line-height:1.4}.departure-name{font-size:14px;font-weight:650;line-height:1.35;overflow-wrap:anywhere}.departure-dest{font-size:12px;color:#d1d5db;margin-top:4px;line-height:1.35}.departure-note{font-size:11px;color:#9ca3af;margin-top:5px;line-height:1.35}.departure-time{text-align:right;min-width:72px}.departure-time strong{font-size:16px;white-space:nowrap}.time-state{font-size:11px;display:block;color:#a7f3d0;margin-top:4px;max-width:110px}.time-state.past{color:#fbbf24}.time-state.unknown{color:#9ca3af}
+.trip-meta{padding:10px 12px;background:#1f2937;border:1px solid #374151;border-radius:10px;font-size:12px;color:#d1d5db;line-height:1.5;margin:8px 0 12px}.trip-timeline{position:relative;padding:0 0 0 9px}.timeline-stop{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:9px;position:relative;min-height:63px;padding:0 2px 15px}.timeline-track{position:relative;display:flex;justify-content:center}.timeline-track:before{content:"";position:absolute;top:10px;bottom:-5px;width:3px;background:#0e7490;border-radius:3px}.timeline-stop:last-child .timeline-track:before{display:none}.timeline-dot{position:relative;z-index:1;width:11px;height:11px;margin-top:6px;border-radius:50%;background:#7dd3fc;border:2px solid #111827;box-shadow:0 0 0 1px #7dd3fc}.timeline-stop.past .timeline-dot{background:#6b7280;box-shadow:0 0 0 1px #6b7280}.timeline-stop.focus .timeline-dot{width:15px;height:15px;margin-top:4px;background:#fff;box-shadow:0 0 0 3px #0284c7}.timeline-name{font-size:14px;line-height:1.35;font-weight:550}.timeline-name-bn{font-size:12px;color:#9ca3af;margin-top:3px}.timeline-state{font-size:11px;color:#9ca3af;margin-top:5px}.timeline-time{text-align:right;padding-top:1px;min-width:72px}.timeline-time strong{font-size:14px;white-space:nowrap}.timeline-time span{display:block;color:#9ca3af;font-size:10px;margin-top:3px}.sheet-footer{border-top:1px solid #374151;padding:9px 14px;color:#9ca3af;font-size:10px;line-height:1.4;background:#111827}
+@media(max-width:760px){.transit-sheet{position:fixed;left:0;right:0;bottom:0;max-height:72dvh;max-height:72vh;border-radius:24px 24px 0 0;border-left:0;border-right:0;border-bottom:0;padding-bottom:max(8px,env(safe-area-inset-bottom));z-index:1000}.sheet-title{font-size:20px}.sheet-body{padding-left:16px;padding-right:16px}.departure-row{padding:14px 0}.sheet-tabs{gap:6px}.sheet-tab{padding:9px 12px}.timeline-stop{min-height:64px}}
+
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -25,7 +34,14 @@
 <div class="section"><h2>Next steps</h2><div class="muted">1. Import verified BRTC route geometry and stops.<br>2. Add official departure schedules and service days.<br>3. Check that each route follows the actual bus path.<br>4. Enable route search and journey planning after the dataset is complete.</div></div>
 <div class="footer">Map tiles: OpenFreeMap. Geographic data: © OpenStreetMap contributors. Only mapped stop features are shown. A colored pin means the stop name appears in the BRTC route schedule; a gray pin means the route-to-stop association is not confirmed. Lines are estimates, not GPS tracks.</div>
 </aside>
-<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = OSM stop with a BRTC-listed name (boarding bay still to confirm)<br>Gray pins = mapped stop; BRTC route link unverified<br>Dashed lines = estimated roads, not GPS traces</div></main>
+<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = BRTC-listed stop name<br>Gray pins = mapped stop; route link unverified<br>Dashed lines = estimated roads, not GPS traces</div>
+<section id="transitSheet" class="transit-sheet" hidden aria-label="Bus stop departures and trip timetable">
+ <div class="sheet-handle"></div>
+ <div class="sheet-header"><div><div class="sheet-title" id="sheetTitle">Bus stop</div><div class="sheet-subtitle" id="sheetSubtitle">Scheduled departures</div></div><button class="sheet-close" id="closeTransitSheet" aria-label="Close timetable">×</button></div>
+ <div class="sheet-tabs"><button class="sheet-tab active" id="departuresTab">Departures</button><button class="sheet-tab" id="timelineTab" disabled>Trip timeline</button></div>
+ <div class="sheet-body" id="sheetBody"></div>
+ <div class="sheet-footer">Scheduled data only · No live GPS or live arrival predictions are connected. BRTC schedules and stop locations need current confirmation.</div>
+</section></main>
 </div>
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
@@ -76,7 +92,7 @@ function addData(data){
  for(const f of data.features){const g=f.geometry;if(!g)continue;function walk(c){if(typeof c[0]==='number'&&typeof c[1]==='number'){bounds.extend(c);count++;}else if(Array.isArray(c))c.forEach(walk);}walk(g.coordinates||[]);}
  if(count&& !bounds.isEmpty())map.fitBounds(bounds,{padding:70,maxZoom:14,duration:800});
  showRouteCards([...data.features,...autoRoadFeatures]);const mappedCount=data.features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified===true&&f.geometry?.type==='Point').length;const hiddenCount=data.features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified!==true).length;statusEl.textContent='Loaded '+data.features.length+' route-stop records: '+mappedCount+' mapped stop records shown; '+hiddenCount+' unverified stop locations hidden until matched to a real stop or terminal.';statusEl.className='status ok';
- map.on('click','brtc-points',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
+ map.on('click','brtc-points',e=>{const f=e.features[0];openStopDepartures(f);});
  map.on('click','brtc-lines',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
  for(const layer of ['brtc-points','brtc-lines']){map.on('mouseenter',layer,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',layer,()=>map.getCanvas().style.cursor='');}
 }
@@ -124,12 +140,122 @@ function showRouteCards(features){
     const b=boundsFor(x);
     if(b)map.fitBounds(b,{padding:70,maxZoom:14,duration:700});
     else if(x.points[0])map.flyTo({center:x.points[0].geometry.coordinates,zoom:14});
+    openRouteTimeline(x.key);
    };
    routesEl.appendChild(el);
   }
  };
  draw(searchText);
  document.getElementById('search').oninput=e=>{searchText=e.target.value;draw(searchText);};
+}
+
+const sheet=document.getElementById('transitSheet');
+const sheetTitle=document.getElementById('sheetTitle'), sheetSubtitle=document.getElementById('sheetSubtitle'), sheetBody=document.getElementById('sheetBody');
+const departuresTab=document.getElementById('departuresTab'), timelineTab=document.getElementById('timelineTab');
+let selectedStopFeature=null, selectedStopMatches=[], selectedRouteId=null;
+
+function normalizeStopName(value){return String(value||'').toLowerCase().normalize('NFKC').replace(/[^a-z0-9\u0980-\u09ff]/g,'');}
+function distanceMetres(a,b){
+ const toRad=v=>v*Math.PI/180;const [lon1,lat1]=a,[lon2,lat2]=b;
+ const dLat=toRad(lat2-lat1),dLon=toRad(lon2-lon1);
+ const q=Math.sin(dLat/2)**2+Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLon/2)**2;
+ return 6371000*2*Math.atan2(Math.sqrt(q),Math.sqrt(1-q));
+}
+function formatClock(hm){
+ if(!/^\d{2}:\d{2}$/.test(String(hm||'')))return 'Time not published';
+ const [h,m]=hm.split(':').map(Number), suffix=h>=12?'PM':'AM', h12=(h%12)||12;
+ return h12+':'+String(m).padStart(2,'0')+' '+suffix;
+}
+function scheduleState(hm){
+ if(!/^\d{2}:\d{2}$/.test(String(hm||'')))return {label:'Time not published',cls:'unknown',detail:'No exact stop time in the loaded BRTC timetable.'};
+ const [h,m]=hm.split(':').map(Number),now=new Date(),delta=(h*60+m)-(now.getHours()*60+now.getMinutes());
+ if(delta>0){
+  const hrs=Math.floor(delta/60),mins=delta%60;
+  const eta=hrs>0?(hrs+'h '+mins+'m'):(mins+' min');
+  return {label:'Scheduled in '+eta,cls:'future',detail:'Relative to your device clock; not a live arrival estimate.'};
+ }
+ if(delta===0)return {label:'Scheduled now',cls:'future',detail:'This is the timetable time only; bus arrival is not live-tracked.'};
+ return {label:'Time passed',cls:'past',detail:'The published time has passed today; actual departure is unknown.'};
+}
+function featureStopLabel(f){const p=f?.properties||{};return p.stop_name||p.stop_name_en||p.name||'Bus stop';}
+function showTransitSheet(){sheet.hidden=false;sheet.style.display='flex';}
+function closeTransitSheet(){sheet.hidden=true;sheet.style.display='none';}
+document.getElementById('closeTransitSheet').addEventListener('click',closeTransitSheet);
+departuresTab.addEventListener('click',()=>{if(selectedStopFeature)openStopDepartures(selectedStopFeature);});
+timelineTab.addEventListener('click',()=>{if(selectedRouteId)openRouteTimeline(selectedRouteId);});
+
+function openStopDepartures(feature){
+ if(!feature)return;
+ selectedStopFeature=feature;selectedRouteId=null;selectedStopMatches=[];
+ const p=feature.properties||{}, point=feature.geometry?.coordinates;
+ const name=featureStopLabel(feature);
+ const nameKey=normalizeStopName(p.stop_name_en||p.stop_name||name);
+ const records=(importedData?.features||[]).filter(f=>f.properties?.stop_type);
+ selectedStopMatches=records.filter(f=>{
+  const q=f.properties||{};
+  if(!q.route_stop_verified)return false;
+  const exact=(normalizeStopName(q.stop_name_en)===nameKey)||(normalizeStopName(q.stop_name)===normalizeStopName(p.stop_name));
+  const near=point&&f.geometry?.type==='Point'&&q.coordinate_verified===true&&distanceMetres(point,f.geometry.coordinates)<=120;
+  return exact||near;
+ });
+ const byRoute=new Map();
+ for(const f of selectedStopMatches){
+  const q=f.properties||{},id=q.route_id||'unknown';
+  if(!byRoute.has(id)||(!byRoute.get(id).properties?.scheduled_time_local&&q.scheduled_time_local))byRoute.set(id,f);
+ }
+ const services=[...byRoute.values()].sort((a,b)=>{
+  const ta=a.properties?.scheduled_time_local||'99:99',tb=b.properties?.scheduled_time_local||'99:99';return ta.localeCompare(tb);
+ });
+ sheetTitle.textContent=name;
+ sheetSubtitle.textContent=(p.stop_name_en||name)+(p.stop_name&&p.stop_name_en?' · '+p.stop_name:'')+' · BRTC schedules';
+ departuresTab.classList.add('active');timelineTab.classList.remove('active');timelineTab.disabled=true;
+ let html='<div class="sheet-notice">These are published timetable entries, not the Google Maps real-time feed. A bus showing “scheduled” is not confirmed to be approaching.</div>';
+ if(services.length){
+  html+='<div class="departures-heading">Scheduled services at this stop · '+services.length+'</div>';
+  for(const f of services){
+   const q=f.properties||{},state=scheduleState(q.scheduled_time_local);
+   const routeName=q.route_name||q.route_id||'BRTC service',dest=(records.find(g=>g.properties?.route_id===q.route_id&&g.properties?.stop_type==='destination')?.properties)||{};
+   const time=q.scheduled_time_local?formatClock(q.scheduled_time_local):'—';
+   const detail=q.scheduled_time_local?('Published stop time · '+(q.schedule_period||'schedule')):'Stop-specific departure time not published in the loaded data';
+   html+='<button class="departure-row" data-route="'+esc(q.route_id||'')+'"><span class="bus-icon">🚌</span><span><span class="departure-name">'+esc(routeName)+'</span><span class="departure-dest">Toward '+esc(dest.stop_name_en||dest.stop_name||'destination not recorded')+'</span><span class="departure-note">'+esc(detail)+'</span></span><span class="departure-time"><strong>'+esc(time)+'</strong><span class="time-state '+state.cls+'">'+esc(state.label)+'</span></span></button>';
+  }
+ }else{
+  html+='<div class="trip-meta"><strong>No verified BRTC departure is linked to this exact stop yet.</strong><br>The stop is mapped, but we need a route-specific stop list or official boarding-point record before listing departures.</div>';
+ }
+ html+='<div class="sheet-notice">Current scope: BRTC only. Private operators like those shown in your Google Maps screenshots need their own verified schedules before they can be listed here.</div>';
+ sheetBody.innerHTML=html;
+ sheetBody.querySelectorAll('[data-route]').forEach(el=>el.addEventListener('click',()=>openRouteTimeline(el.getAttribute('data-route'),nameKey)));
+ showTransitSheet();
+}
+function openRouteTimeline(routeId,focusNameKey=''){
+ if(!routeId||!importedData)return;
+ const stops=importedData.features.filter(f=>f.properties?.route_id===routeId&&f.properties?.stop_type).sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order));
+ if(!stops.length)return;
+ selectedRouteId=routeId;
+ const p=stops[0].properties||{},routeName=p.route_name||routeId,routeBn=p.route_name_bn||'';
+ const period=p.schedule_period||'Published timetable details vary by stop';
+ sheetTitle.textContent=routeName;
+ sheetSubtitle.textContent=routeBn+(routeBn?' · ':'')+period;
+ departuresTab.classList.remove('active');timelineTab.classList.add('active');timelineTab.disabled=false;
+ let html='<div class="trip-meta"><strong>🚌 '+esc(routeName)+'</strong><br>'+esc(p.timetable_note||'No full timetable note was supplied for this route.')+'<br><br><span style="color:#fbbf24">Schedule only — no live GPS or real-time arrival feed is connected.</span></div>';
+ html+='<div class="departures-heading">Stop-by-stop trip timeline · '+stops.length+' listed stops</div><div class="trip-timeline">';
+ for(const f of stops){
+  const q=f.properties||{},hm=q.scheduled_time_local||'',state=scheduleState(hm);
+  const norm=normalizeStopName(q.stop_name_en||q.stop_name);
+  const focused=focusNameKey&&norm===focusNameKey;
+  const past=state.cls==='past';
+  const coordsKnown=q.coordinate_verified===true&&f.geometry?.type==='Point';
+  const locLabel=coordsKnown?'Mapped stop candidate':'Exact stop location not mapped yet';
+  const timeLabel=hm?formatClock(hm):'Not listed';
+  html+='<div class="timeline-stop '+(past?'past ':'')+(focused?'focus':'')+'"><div class="timeline-track"><span class="timeline-dot"></span></div><div><div class="timeline-name">'+esc(q.stop_name_en||q.stop_name||'Unnamed stop')+'</div>'+(q.stop_name&&q.stop_name_en?'<div class="timeline-name-bn">'+esc(q.stop_name)+'</div>':'')+'<div class="timeline-state">'+esc(state.label)+' · '+esc(locLabel)+'</div></div><div class="timeline-time"><strong>'+esc(timeLabel)+'</strong><span>'+(hm?'Published time':'No time in source')+'</span></div></div>';
+ }
+ html+='</div>';
+ sheetBody.innerHTML=html;
+ showTransitSheet();
+ if(focusNameKey){
+  const focusedEl=sheetBody.querySelector('.timeline-stop.focus');
+  if(focusedEl)focusedEl.scrollIntoView({block:'center',behavior:'smooth'});
+ }
 }
 
 async function addRoadPaths(features){
@@ -211,7 +337,7 @@ async function addRoadPaths(features){
  map.addSource('brtc-auto-road-data',{type:'geojson',data:{type:'FeatureCollection',features:roadFeatures}});
  map.addLayer({id:'brtc-auto-lines',type:'line',source:'brtc-auto-road-data',paint:{'line-color':['coalesce',['get','color'],'#13845b'],'line-width':['interpolate',['linear'],['zoom'],8,2.5,12,4.5,15,6],'line-opacity':0.9,'line-dasharray':[2,1]}},map.getLayer('brtc-points')?'brtc-points':undefined);
  if(!roadHandlersAdded){
-  map.on('click','brtc-auto-lines',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
+  map.on('click','brtc-auto-lines',e=>{const f=e.features[0];openRouteTimeline(f.properties?.route_id);});
   map.on('mouseenter','brtc-auto-lines',()=>map.getCanvas().style.cursor='pointer');
   map.on('mouseleave','brtc-auto-lines',()=>map.getCanvas().style.cursor='');
   roadHandlersAdded=true;
