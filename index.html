@@ -60,7 +60,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson?v=20261014-verified-stops-v2')
+ fetch('./data/brtc-routes.geojson?v=20261014-transit-panel-v1')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
@@ -181,6 +181,7 @@ function featureStopLabel(f){const p=f?.properties||{};return p.stop_name||p.sto
 function showTransitSheet(){sheet.hidden=false;sheet.style.display='flex';}
 function closeTransitSheet(){sheet.hidden=true;sheet.style.display='none';}
 document.getElementById('closeTransitSheet').addEventListener('click',closeTransitSheet);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeTransitSheet();});
 departuresTab.addEventListener('click',()=>{if(selectedStopFeature)openStopDepartures(selectedStopFeature);});
 timelineTab.addEventListener('click',()=>{if(selectedRouteId)openRouteTimeline(selectedRouteId);});
 
@@ -208,7 +209,7 @@ function openStopDepartures(feature){
  });
  sheetTitle.textContent=name;
  sheetSubtitle.textContent=(p.stop_name_en||name)+(p.stop_name&&p.stop_name_en?' · '+p.stop_name:'')+' · BRTC schedules';
- departuresTab.classList.add('active');timelineTab.classList.remove('active');timelineTab.disabled=true;
+ departuresTab.classList.add('active');departuresTab.disabled=false;timelineTab.classList.remove('active');timelineTab.disabled=true;
  let html='<div class="sheet-notice">These are published timetable entries, not the Google Maps real-time feed. A bus showing “scheduled” is not confirmed to be approaching.</div>';
  if(services.length){
   html+='<div class="departures-heading">Scheduled services at this stop · '+services.length+'</div>';
@@ -236,7 +237,7 @@ function openRouteTimeline(routeId,focusNameKey=''){
  const period=p.schedule_period||'Published timetable details vary by stop';
  sheetTitle.textContent=routeName;
  sheetSubtitle.textContent=routeBn+(routeBn?' · ':'')+period;
- departuresTab.classList.remove('active');timelineTab.classList.add('active');timelineTab.disabled=false;
+ departuresTab.classList.remove('active');departuresTab.disabled=!selectedStopFeature;timelineTab.classList.add('active');timelineTab.disabled=false;
  let html='<div class="trip-meta"><strong>🚌 '+esc(routeName)+'</strong><br>'+esc(p.timetable_note||'No full timetable note was supplied for this route.')+'<br><br><span style="color:#fbbf24">Schedule only — no live GPS or real-time arrival feed is connected.</span></div>';
  html+='<div class="departures-heading">Stop-by-stop trip timeline · '+stops.length+' listed stops</div><div class="trip-timeline">';
  for(const f of stops){
