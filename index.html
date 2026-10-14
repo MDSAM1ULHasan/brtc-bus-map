@@ -44,7 +44,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson')
+ fetch('./data/brtc-routes.geojson?v=20261014-demra-stop-fix')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
