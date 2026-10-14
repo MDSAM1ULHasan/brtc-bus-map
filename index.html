@@ -28,14 +28,28 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
 const statusEl=document.getElementById('status'), routesEl=document.getElementById('routes'), detailsEl=document.getElementById('details');
-let importedData=null, searchText='';
+let importedData=null, searchText=''; let autoRoadFeatures=[]; let roadHandlersAdded=false;
 const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[90.4125,23.8103],zoom:10,attributionControl:true});
 map.addControl(new maplibregl.NavigationControl(),'top-right');
 map.addControl(new maplibregl.ScaleControl({maxWidth:110,unit:'metric'}),'bottom-right');
-map.on('load',()=>{statusEl.textContent='Detailed street map loaded. Add a GeoJSON file containing BRTC route data to display bus routes and stops.';statusEl.className='status ok';});
+map.on('load',async()=>{
+ statusEl.textContent='Detailed street map loaded. Loading the first published BRTC pilot route…';
+ statusEl.className='status';
+ try{
+  const response=await fetch('./data/brtc-routes.geojson');
+  if(!response.ok)throw new Error('Bundled route dataset could not be loaded.');
+  const data=await response.json();
+  addData(data);
+  await addRoadPaths(data.features);
+ }catch(e){
+  console.warn('Built-in BRTC data could not be loaded',e);
+  statusEl.textContent='Street map loaded, but the pilot route data did not load. You can still import a GeoJSON file below.';
+  statusEl.className='status';
+ }
+});
 map.on('error',e=>{console.warn('Map error',e);statusEl.textContent='Map tiles may be temporarily unavailable. Check your internet connection and reload.';statusEl.className='status';});
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function featureTitle(f){const p=f.properties||{};return p.route_name||p.name||p.stop_name||p.terminal_name||p.ref||'Unnamed feature';}
+function featureTitle(f){const p=f.properties||{};if(p.stop_type)return p.stop_name||p.stop_name_en||p.name||p.route_name||'Unnamed stop';return p.route_name||p.name||p.stop_name||p.terminal_name||p.ref||'Unnamed feature';}
 function popupHtml(f){const p=f.properties||{};let title=featureTitle(f);let rows=[];for(const [k,v] of Object.entries(p)){if(v!==null&&v!==''&&!['route_name','name','stop_name','terminal_name'].includes(k))rows.push('<div><b>'+esc(k.replaceAll('_',' '))+':</b> '+esc(v)+'</div>');}return '<strong>'+esc(title)+'</strong>'+rows.join('');}
 function showDetails(f){const p=f.properties||{};detailsEl.innerHTML='<strong>'+esc(featureTitle(f))+'</strong><br>'+Object.entries(p).map(([k,v])=>'<div><b>'+esc(k.replaceAll('_',' '))+':</b> '+esc(v??'')+'</div>').join('')+'<div class="muted">Geometry: '+esc(f.geometry?.type||'unknown')+'</div>';}
 function addData(data){
@@ -49,7 +63,7 @@ function addData(data){
  const bounds=new maplibregl.LngLatBounds();let count=0;
  for(const f of data.features){const g=f.geometry;if(!g)continue;function walk(c){if(typeof c[0]==='number'&&typeof c[1]==='number'){bounds.extend(c);count++;}else if(Array.isArray(c))c.forEach(walk);}walk(g.coordinates||[]);}
  if(count&& !bounds.isEmpty())map.fitBounds(bounds,{padding:70,maxZoom:14,duration:800});
- showRouteCards(data.features);statusEl.textContent='Imported '+data.features.length+' features. Verify route shapes and timetable properties before public use.';statusEl.className='status ok';
+ showRouteCards([...data.features,...autoRoadFeatures]);statusEl.textContent='Loaded '+data.features.length+' route/stop features. Road paths and schedules need verification before travel.';statusEl.className='status ok';
  map.on('click','brtc-points',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
  map.on('click','brtc-lines',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
  for(const layer of ['brtc-points','brtc-lines']){map.on('mouseenter',layer,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',layer,()=>map.getCanvas().style.cursor='');}
@@ -59,7 +73,69 @@ function showRouteCards(features){
  const draw=(filter='')=>{routesEl.innerHTML='';const filtered=items.filter(x=>(x.title+' '+JSON.stringify(x.p)).toLowerCase().includes(filter.toLowerCase()));if(!filtered.length){routesEl.innerHTML='<div class="muted">No matching routes or stops.</div>';return;}for(const x of filtered){const el=document.createElement('button');el.className='route-card';el.style.textAlign='left';el.style.width='100%';el.innerHTML='<strong><span class="line-dot" style="background:'+(x.p.color|| (x.geometry==='Point'?'#e87924':'#168257'))+'"></span>'+esc(x.title)+'</strong><small>'+esc(x.geometry)+' · '+esc(x.p.direction||x.p.stop_type||'Select to inspect')+'</small>';el.onclick=()=>{showDetails(x.f);const g=x.f.geometry;if(g.type==='Point')map.flyTo({center:g.coordinates,zoom:15});else{const b=new maplibregl.LngLatBounds();(function walk(c){if(typeof c[0]==='number')b.extend(c);else c.forEach(walk)})(g.coordinates);map.fitBounds(b,{padding:70,maxZoom:14});}};routesEl.appendChild(el);}};
  draw(searchText);document.getElementById('search').oninput=e=>{searchText=e.target.value;draw(searchText);};
 }
-document.getElementById('import').onclick=async()=>{const f=document.getElementById('file').files[0];if(!f){statusEl.textContent='Choose a GeoJSON file first.';return;}try{const data=JSON.parse(await f.text());addData(data);}catch(e){statusEl.textContent='Import failed: '+e.message;statusEl.className='status';}};
+
+async function addRoadPaths(features){
+ const groups=new Map();
+ for(const f of features){
+  const p=f.properties||{};
+  if(f.geometry?.type!=='Point'||!p.route_id||!p.stop_type)continue;
+  if(!groups.has(p.route_id))groups.set(p.route_id,{});
+  groups.get(p.route_id)[p.stop_type]=f;
+ }
+ const roadFeatures=[];
+ for(const [routeId,group] of groups.entries()){
+  if(!group.origin||!group.destination)continue;
+  const origin=group.origin, destination=group.destination, op=origin.properties||{}, dp=destination.properties||{};
+  const coords=[origin.geometry.coordinates,destination.geometry.coordinates];
+  const coordsText=coords.map(c=>c[0]+','+c[1]).join(';');
+  const url='https://router.project-osrm.org/route/v1/driving/'+coordsText+'?overview=full&geometries=geojson&steps=false';
+  try{
+   const res=await fetch(url);
+   if(!res.ok)throw new Error('Road-routing service returned HTTP '+res.status);
+   const result=await res.json();
+   if(result.code!=='Ok'||!result.routes||!result.routes.length)throw new Error(result.message||'No driving route found');
+   const route=result.routes[0];
+   roadFeatures.push({type:'Feature',geometry:route.geometry,properties:{
+    route_id:routeId,
+    route_name:op.route_name||dp.route_name||routeId,
+    feature_type:'automatically_generated_road_path',
+    road_path_status:'OSRM driving-route estimate — NOT confirmed as the exact BRTC bus path',
+    road_distance_km_estimated:Math.round(route.distance/100)/10,
+    road_duration_minutes_estimated:Math.round(route.duration/60),
+    source_schedule:op.schedule_source||dp.schedule_source||'Not provided',
+    schedule_source_url:op.schedule_source_url||dp.schedule_source_url||'',
+    schedule_status:op.schedule_status||dp.schedule_status||'Not verified',
+    published_distance_km:op.published_distance_km||dp.published_distance_km||null,
+    color:'#13845b'
+   }});
+  }catch(e){
+   console.warn('Could not create road line for '+routeId,e);
+   statusEl.textContent='Terminal stops loaded, but automatic road tracing failed for '+(op.route_name||routeId)+'. The routing service may be temporarily unavailable.';
+   statusEl.className='status';
+  }
+ }
+ autoRoadFeatures=roadFeatures;
+ if(map.getLayer('brtc-auto-lines'))map.removeLayer('brtc-auto-lines');
+ if(map.getSource('brtc-auto-road-data'))map.removeSource('brtc-auto-road-data');
+ map.addSource('brtc-auto-road-data',{type:'geojson',data:{type:'FeatureCollection',features:roadFeatures}});
+ map.addLayer({id:'brtc-auto-lines',type:'line',source:'brtc-auto-road-data',paint:{'line-color':['coalesce',['get','color'],'#13845b'],'line-width':4,'line-opacity':0.9,'line-dasharray':[2,1]}},map.getLayer('brtc-points')?'brtc-points':undefined);
+ if(!roadHandlersAdded){
+  map.on('click','brtc-auto-lines',e=>{const f=e.features[0];new maplibregl.Popup().setLngLat(e.lngLat).setHTML(popupHtml(f)).addTo(map);showDetails(f);});
+  map.on('mouseenter','brtc-auto-lines',()=>map.getCanvas().style.cursor='pointer');
+  map.on('mouseleave','brtc-auto-lines',()=>map.getCanvas().style.cursor='');
+  roadHandlersAdded=true;
+ }
+ showRouteCards([...features,...roadFeatures]);
+ if(roadFeatures.length){
+  statusEl.textContent='Loaded '+features.length+' terminal-stop records and automatically traced '+roadFeatures.length+' road path(s). Route line is an estimate, not a verified BRTC bus trace; timetable needs reconfirmation.';
+  statusEl.className='status ok';
+ }else if(!statusEl.textContent.includes('failed')){
+  statusEl.textContent='Terminal markers loaded. No road lines were generated because origin/destination pairs were not found.';
+  statusEl.className='status';
+ }
+}
+
+document.getElementById('import').onclick=async()=>{const f=document.getElementById('file').files[0];if(!f){statusEl.textContent='Choose a GeoJSON file first.';return;}try{const data=JSON.parse(await f.text());addData(data);await addRoadPaths(data.features);}catch(e){statusEl.textContent='Import failed: '+e.message;statusEl.className='status';}};
 </script>
 </body>
 </html>
