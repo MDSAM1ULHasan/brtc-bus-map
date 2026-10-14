@@ -1,55 +1,44 @@
 # BRTC Bus Routes & Timetables — Bangladesh
 
-A free, color-coded interactive map project for Dhaka city and metro BRTC route information.
+A free, interactive street map project for published BRTC route information in Dhaka.
 
-## Map features
+## Important accuracy correction
 
-- Detailed, zoomable road map powered by MapLibre GL JS and OpenFreeMap.
-- Bengali/English place labels where the basemap provides them.
-- A unique color for each route and its stop markers.
-- Search by route name, Bangla route name, stop name, and route notes.
-- Click any stop or route line to inspect route and timetable information.
-- GeoJSON import for adding more route datasets.
-- Road-following route estimates generated through ordered stop waypoints using the public OSRM demo router.
+Earlier prototype data used guessed neighbourhood coordinates for many stops. Those guesses caused markers to appear in narrow residential lanes rather than at mapped bus stops. The current map data has been corrected:
 
-## Included route dataset
+- **Only stop features matched to an OpenStreetMap bus-stop or bus-station feature are placed on the map.**
+- **73 unmatched stop records are hidden from the map** instead of being placed at guessed coordinates. Their names remain in the route list so they can be verified later.
+- Gray pins are mapped public bus stops where the association with a specific BRTC route has not been confirmed.
+- Colored pins have a stop name that appears in a BRTC-published route timetable and a matching OSM stop feature. That still does not prove the exact BRTC boarding bay or side of the road; those must be checked separately.
+- A route line is generated only when every stop record for that route has a mapped point and the name is listed for that route in the published BRTC data. The dashed line is an OSRM road-routing estimate, **not an official BRTC GPS trace**.
+- Where a stop or route can't be verified, the map deliberately leaves it unpinned or without a line rather than drawing a guess.
 
-`data/brtc-routes.geojson` contains **22 Dhaka city and metro-commuter route records**, with 189 route-stop waypoint features at the time of this update. The list was assembled from BRTC's published **Citizen Charter (3rd quarter FY 2024–25; page updated 4 June 2025)** and BRTC Passenger Transport Service tables.
+## Current dataset
 
-Official source:
+`data/brtc-routes.geojson` contains 22 BRTC route records with 189 route-stop records. The current review has:
+- 116 mapped route-stop feature records (some represent the same physical bus stop used by multiple routes).
+- 73 stop records hidden because a matching stop/terminal feature hasn't been identified.
+- Only 45 route-stop names linked to the published BRTC schedule; route-specific boarding points may still need field verification.
+
+Official source pages:
 - BRTC Citizen Charter: https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen
 - BRTC Passenger Transport Service: https://brtc.gov.bd/pages/static-pages/6922e0e1933eb65569e29008
 
-**Coverage limitation:** This is a consolidated list of Dhaka city and metro-commuter route entries found in BRTC publications, not a guarantee that every route currently operates. Some BRTC tables conflict on times, route distances and service details. Check with BRTC before travelling.
+The route records are compiled from BRTC publications, but that does not guarantee each listed service still operates today. Confirm times and pickup points with BRTC before travelling.
 
-## Important route-geometry and location note
+## Map technology and sources
 
-- Stop coordinates are approximate geographic waypoints to create a useful first map. They must be checked against the exact boarding point.
-- Colored route lines are automatically generated road-routing estimates through the listed waypoints, not official BRTC GPS traces or confirmation of the precise bus path.
-- The routing service can be temporarily unavailable or rate-limited; the map may show stop points without a route line if that happens.
-- Timetable notes retain the published source and flag information that needs reconfirmation. Do not interpret missing data as “no service”.
+- Map display: MapLibre GL JS
+- Base map: OpenFreeMap
+- Underlying geographic data: © OpenStreetMap contributors
+- Road-routing estimates: public OSRM demo service
 
-## Regional route archive
+The coordinate provenance for mapped stops is provided in each feature's `coordinate_source_url`, `coordinate_osm_id`, and `coordinate_match_status` fields. Stop association with a specific BRTC service is recorded separately in `route_stop_verified` and `route_stop_status`.
 
-The earlier Dhaka–Faridpur pilot data is preserved in `data/brtc-regional-routes.geojson`.
+## Adding a verified stop
 
-## How to add another route
-
-Add a Point feature for each ordered stop to `data/brtc-routes.geojson`. Every point should include:
-- `route_id` — shared by all stops on the same route.
-- `route_name` and optional `route_name_bn`.
-- `color` — hex color unique to the route.
-- `route_order` — ascending stop order starting with 1.
-- `stop_type` — `origin`, `intermediate` or `destination`.
-- `stop_name`, `stop_name_en`, and `[longitude, latitude]` geometry.
-- `timetable_note`, `official_source`, `official_source_url`, and `source_status`.
-
-On page load, the app requests a road route through each route's ordered stop coordinates and draws each line in the corresponding color. The public OSRM demo service has no uptime guarantee and must not be treated as unlimited production routing infrastructure.
+Add the exact mapped bus-stop or bus-station feature coordinate from OpenStreetMap, and record its OSM reference and source URL. Do not use a neighbourhood centre, junction centre, random road point, or route midpoint in place of a boarding stop. For route line generation, every stop in the stop sequence must have `coordinate_verified=true` and `route_stop_verified=true`; otherwise the route line is intentionally withheld.
 
 ## Deployment
 
-GitHub Actions deploys changes on `main` to GitHub Pages using `.github/workflows/deploy-pages.yml`.
-
-## Attributions
-
-Base-map tiles: OpenFreeMap. Geographic data: © OpenStreetMap contributors. Road routing: public OSRM demo service. Follow each provider's usage, fair-use and attribution rules.
+GitHub Actions deploys changes to the `main` branch through `.github/workflows/deploy-pages.yml`.
