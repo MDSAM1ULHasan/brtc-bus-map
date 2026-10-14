@@ -17,15 +17,15 @@
 <header><div><h1>🚌 BRTC Bus Routes & Timetables</h1><p>বাংলাদেশের বাস রুট ম্যাপ · Bangladesh</p></div><span class="pill">Free interactive map · Preview</span></header>
 <div class="app">
 <aside class="sidebar">
-<div class="section"><h2>Find a route / রুট খুঁজুন</h2><input id="search" class="field" placeholder="Search route, terminal or stop…"><div class="muted">Search the loaded Dhaka route and stop dataset. Route operation and stop locations still need verification.</div></div>
+<div class="section"><h2>Find a route / রুট খুঁজুন</h2><input id="search" class="field" placeholder="Search route, terminal or stop…"><div class="muted">Only mapped bus-stop features are placed on the map. Unverified names stay in the route list until their exact location is found.</div></div>
 <div class="section"><h2>Map data / ম্যাপের তথ্য</h2><div class="status" id="status">Base map is loading. Import a GeoJSON file to add verified routes and stops.</div></div>
 <div class="section"><h2>Import route data</h2><p class="muted">Upload a GeoJSON FeatureCollection with LineString/MultiLineString routes and Point stop markers. Properties such as route_name, stop_name, direction, departure_time, service_days and source will appear in popups.</p><input id="file" class="fileinput" type="file" accept=".geojson,.json,application/geo+json,application/json"><button id="import" class="btn full" style="margin-top:10px">Import GeoJSON</button></div>
 <div class="section"><h2>Dhaka city routes / ঢাকা শহরের রুট</h2><div class="muted" style="margin-bottom:8px">Each route has a separate color. The listed route data is from BRTC publications; some current operations may have changed.</div><div class="route-list" id="routes"><div class="muted">Loading BRTC route records…</div></div></div>
 <div class="section"><h2>Selected feature</h2><div id="details" class="muted">Click a route or stop on the map to inspect its details.</div></div>
 <div class="section"><h2>Next steps</h2><div class="muted">1. Import verified BRTC route geometry and stops.<br>2. Add official departure schedules and service days.<br>3. Check that each route follows the actual bus path.<br>4. Enable route search and journey planning after the dataset is complete.</div></div>
-<div class="footer">Map data © OpenStreetMap contributors. Base style: OpenFreeMap. Bus route and timetable accuracy depends on uploaded source data. This prototype does not provide live GPS tracking.</div>
+<div class="footer">Map tiles: OpenFreeMap. Geographic data: © OpenStreetMap contributors. Only mapped stop features are shown. A colored pin means the stop name appears in the BRTC route schedule; a gray pin means the route-to-stop association is not confirmed. Lines are estimates, not GPS tracks.</div>
 </aside>
-<main class="mapwrap"><div id="map"></div><div class="legend"><b>Colored routes / রঙিন রুট</b><br>Dots = stops · dashed line = road-routing estimate<br>Listed by BRTC; verify active service</div></main>
+<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = stop name listed in BRTC schedule<br>Gray pins = mapped OSM bus stop; route link unverified<br>Dashed lines = estimated roads, not GPS traces</div></main>
 </div>
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
@@ -44,7 +44,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson?v=20261014-demra-stop-fix')
+ fetch('./data/brtc-routes.geojson?v=20261014-verified-stops-v1')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
@@ -71,7 +71,7 @@ function addData(data){
  if(map.getSource('brtc-data'))map.removeSource('brtc-data');
  map.addSource('brtc-data',{type:'geojson',data});
  map.addLayer({id:'brtc-lines',type:'line',source:'brtc-data',filter:['in',['geometry-type'],['literal',['LineString','MultiLineString']]],paint:{'line-color':['coalesce',['get','color'],'#168257'],'line-width':4,'line-opacity':0.9}});
- map.addLayer({id:'brtc-points',type:'circle',source:'brtc-data',filter:['in',['geometry-type'],['literal',['Point']]],paint:{'circle-radius':['interpolate',['linear'],['zoom'],8,2.5,12,4.5,16,6],'circle-color':['coalesce',['get','color'],'#e87924'],'circle-stroke-color':'#fff','circle-stroke-width':1.25}});
+ map.addLayer({id:'brtc-points',type:'circle',source:'brtc-data',filter:['in',['geometry-type'],['literal',['Point']]],paint:{'circle-radius':['case',['==',['get','route_stop_verified'],true],6,4],'circle-color':['case',['==',['get','route_stop_verified'],true],['coalesce',['get','color'],'#168257'],'#64748b'],'circle-stroke-color':'#fff','circle-stroke-width':1.4}});
  const bounds=new maplibregl.LngLatBounds();let count=0;
  for(const f of data.features){const g=f.geometry;if(!g)continue;function walk(c){if(typeof c[0]==='number'&&typeof c[1]==='number'){bounds.extend(c);count++;}else if(Array.isArray(c))c.forEach(walk);}walk(g.coordinates||[]);}
  if(count&& !bounds.isEmpty())map.fitBounds(bounds,{padding:70,maxZoom:14,duration:800});
@@ -85,7 +85,7 @@ function showRouteCards(features){
  features.forEach((f,i)=>{
   const p=f.properties||{};
   const key=p.route_id||('feature-'+i);
-  if(!grouped.has(key))grouped.set(key,{key,features:[],points:[],line:null,title:p.route_name||p.name||featureTitle(f),bn:p.route_name_bn||'',color:p.color||'#168257',type:p.route_type||'',schedule:p.timetable_note||p.schedule_note||'',sourceStatus:p.source_status||p.schedule_status||''});
+  if(!grouped.has(key))grouped.set(key,{key,features:[],points:[],namedStops:[],line:null,title:p.route_name||p.name||featureTitle(f),bn:p.route_name_bn||'',color:p.color||'#168257',type:p.route_type||'',schedule:p.timetable_note||p.schedule_note||'',sourceStatus:p.source_status||p.schedule_status||''});
   const g=grouped.get(key);g.features.push(f);
   if(p.route_name)g.title=p.route_name;
   if(p.route_name_bn)g.bn=p.route_name_bn;
@@ -94,7 +94,8 @@ function showRouteCards(features){
   if(p.timetable_note)g.schedule=p.timetable_note;
   if(p.schedule_note)g.schedule=p.schedule_note;
   if(p.source_status)g.sourceStatus=p.source_status;
-  if(f.geometry?.type==='Point'&&p.stop_type)g.points.push(f);
+  if(p.stop_type)g.namedStops.push(f);
+  if(f.geometry?.type==='Point'&&p.coordinate_verified===true)g.points.push(f);
   if(f.geometry?.type==='LineString'||f.geometry?.type==='MultiLineString')g.line=f;
  });
  const items=[...grouped.values()];
@@ -109,15 +110,16 @@ function showRouteCards(features){
  };
  const draw=(filter='')=>{
   routesEl.innerHTML='';
-  const filtered=items.filter(x=>(x.title+' '+x.bn+' '+x.type+' '+x.schedule+' '+x.points.map(p=>(p.properties||{}).stop_name+' '+(p.properties||{}).stop_name_en).join(' ')).toLowerCase().includes(filter.toLowerCase()));
+  const filtered=items.filter(x=>(x.title+' '+x.bn+' '+x.type+' '+x.schedule+' '+x.namedStops.map(f=>{const p=f.properties||{};return (p.stop_name||'')+' '+(p.stop_name_en||'');}).join(' ')).toLowerCase().includes(filter.toLowerCase()));
   if(!filtered.length){routesEl.innerHTML='<div class="muted">No matching routes or stops.</div>';return;}
   for(const x of filtered){
+   const scheduleNames=x.namedStops.filter(f=>(f.properties||{}).route_stop_verified===true).length;
    const el=document.createElement('button');el.className='route-card';el.style.textAlign='left';el.style.width='100%';
    el.innerHTML='<strong><span class="line-dot" style="background:'+esc(x.color)+'"></span>'+esc(x.title)+'</strong>'+
      (x.bn?'<small style="display:block;margin:4px 0">'+esc(x.bn)+'</small>':'')+
-     '<small>'+esc(x.type||'BRTC listed route')+' · '+x.points.length+' stops · '+(x.line?'road line ready':'road line loading')+'</small>';
+     '<small>'+esc(x.type||'BRTC listed route')+' · '+x.points.length+'/'+x.namedStops.length+' stop names mapped · '+scheduleNames+' schedule-listed · '+(x.line?'estimated road line':'line hidden until stops are verified')+'</small>';
    el.onclick=()=>{
-    const detail=x.line||(x.points.find(p=>(p.properties||{}).stop_type==='origin'))||x.features[0];
+    const detail=x.line||(x.points.find(p=>(p.properties||{}).stop_type==='origin'))||x.points[0]||x.features[0];
     if(detail)showDetails(detail);
     const b=boundsFor(x);
     if(b)map.fitBounds(b,{padding:70,maxZoom:14,duration:700});
@@ -134,14 +136,23 @@ async function addRoadPaths(features){
  const groups=new Map();
  for(const f of features){
   const p=f.properties||{};
-  if(f.geometry?.type!=='Point'||!p.route_id||!Number.isFinite(Number(p.route_order)))continue;
+  // Include unlocated stop-name records too: an unverified stop must block route tracing,
+  // not silently disappear and cause the router to skip it.
+  if(!p.route_id||!Number.isFinite(Number(p.route_order)))continue;
   if(!groups.has(p.route_id))groups.set(p.route_id,[]);
   groups.get(p.route_id).push(f);
  }
- const routeEntries=[...groups.entries()].map(([id,points])=>[id,points.sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order))]).filter(([id,points])=>points.length>=2);
+ const routeEntries=[...groups.entries()]
+  .map(([id,stops])=>[id,stops.sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order))])
+  .filter(([id,stops])=>
+   stops.length>=2 &&
+   stops[0].properties?.stop_type==='origin' &&
+   stops[stops.length-1].properties?.stop_type==='destination' &&
+   stops.every(f=>f.geometry?.type==='Point' && f.properties?.coordinate_verified===true && f.properties?.route_stop_verified===true)
+  );
  const roadFeatures=[];
  // Keep the map usable on mobile even if an external router is slow.
- statusEl.textContent='Preparing '+routeEntries.length+' colored routes. You can already zoom, pan and select stops.';
+ statusEl.textContent='Checking '+groups.size+' routes. Only routes with every stop mapped and listed in the BRTC route information can receive an estimated road line.';
  statusEl.className='status ok';
  const routeOne=async([routeId,points])=>{
   const first=points[0], last=points[points.length-1], p=first.properties||{};
@@ -205,10 +216,10 @@ async function addRoadPaths(features){
  }
  showRouteCards([...features,...roadFeatures]);
  if(successCount){
-  statusEl.textContent='Loaded '+groups.size+' BRTC route records; generated '+successCount+' colored road path(s). '+(errors.length?errors.length+' route line(s) could not be generated. ':'')+'Road paths are estimates, not verified BRTC bus GPS traces; published schedules and active service need reconfirmation.';
+  statusEl.textContent='Reviewed '+groups.size+' route records; generated '+successCount+' estimated road line(s). '+(groups.size-routeEntries.length)+' route(s) have at least one stop whose exact location or route association is not verified, so their lines are hidden. '+(errors.length?errors.length+' additional line request(s) failed. ':'')+'A dashed line is an estimate, not an official BRTC GPS trace.';
   statusEl.className=errors.length?'status':'status ok';
  }else{
-  statusEl.textContent='BRTC stop records loaded, but road-line generation failed. Public routing service may be temporarily unavailable; try refreshing later.';
+  statusEl.textContent='No road lines could be created. The stop names remain listed, but route lines are hidden until all route stop locations and route associations can be verified.';
   statusEl.className='status';
  }
 }
