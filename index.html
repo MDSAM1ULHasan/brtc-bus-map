@@ -7,8 +7,10 @@
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <style>
 :root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#182230;background:#f5f7fb}
-*{box-sizing:border-box}body{margin:0}header{height:auto;min-height:66px;padding:14px 20px;background:#102d24;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header h1{font-size:19px;margin:0}header p{margin:4px 0 0;font-size:12px;color:#c9ddd4}.pill{font-size:12px;background:#214638;padding:6px 10px;border-radius:99px}
-.app{display:grid;grid-template-columns:340px 1fr;height:calc(100vh - 66px);min-height:500px}.sidebar{overflow:auto;background:#fff;border-right:1px solid #dfe6e2;padding:18px}.mapwrap{position:relative;min-width:0}#map{width:100%;height:100%;background:#e8eee9}.section{margin:0 0 18px}.section h2{font-size:14px;margin:0 0 8px}.muted{font-size:12px;color:#65736e;line-height:1.5}.field{width:100%;padding:10px 11px;border:1px solid #cad6d0;border-radius:9px;font:inherit;background:white;margin:5px 0 8px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:0;border-radius:9px;background:#176b4a;color:white;font-weight:650;cursor:pointer;font:inherit;font-size:13px}.btn.secondary{background:#e8f2ec;color:#145b40}.btn.full{width:100%}.route-list{display:grid;gap:8px}.route-card{border:1px solid #dfe6e2;border-radius:10px;padding:11px;cursor:pointer;background:#fff}.route-card:hover{border-color:#176b4a}.route-card strong{font-size:13px;display:block}.route-card small{color:#65736e;font-size:11px}.line-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}.status{padding:10px;background:#fff6de;border:1px solid #f1dfaa;color:#6b5416;border-radius:9px;font-size:12px;line-height:1.5}.status.ok{background:#eaf7ef;border-color:#b9e2c6;color:#1d6335}#details{font-size:12px;line-height:1.6}.legend{position:absolute;left:12px;bottom:22px;background:#fff;padding:9px 11px;border-radius:9px;box-shadow:0 1px 6px #0002;font-size:11px;color:#34443c}.maplibregl-popup-content{font:13px system-ui;line-height:1.45;border-radius:10px;max-width:260px}.footer{font-size:10px;color:#7c8983;line-height:1.5}.fileinput{font-size:12px;width:100%}@media(max-width:760px){.app{grid-template-columns:1fr;grid-template-rows:45vh 1fr;height:auto;min-height:calc(100vh - 66px)}.mapwrap{grid-row:1;min-height:300px}.sidebar{grid-row:2;overflow:visible;border-right:0}.app{display:flex;flex-direction:column}.mapwrap{order:0}.sidebar{order:1}header h1{font-size:16px}}
+*{box-sizing:border-box}html{min-height:100%;-webkit-text-size-adjust:100%}body{margin:0;min-height:100%;overflow-x:hidden}header{height:auto;min-height:66px;padding:14px 20px;background:#102d24;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}header h1{font-size:19px;margin:0}header p{margin:4px 0 0;font-size:12px;color:#c9ddd4}.pill{font-size:12px;background:#214638;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);height:calc(100vh - 66px);min-height:500px}.sidebar{overflow:auto;background:#fff;border-right:1px solid #dfe6e2;padding:18px;min-width:0}.mapwrap{position:relative;min-width:0;min-height:0}#map{width:100%;height:100%;min-height:300px;background:#e8eee9}.section{margin:0 0 18px}.section h2{font-size:14px;margin:0 0 8px}.muted{font-size:12px;color:#65736e;line-height:1.5}.field{width:100%;padding:10px 11px;border:1px solid #cad6d0;border-radius:9px;font:inherit;background:white;margin:5px 0 8px;min-width:0}.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:0;border-radius:9px;background:#176b4a;color:white;font-weight:650;cursor:pointer;font:inherit;font-size:13px}.btn.secondary{background:#e8f2ec;color:#145b40}.btn.full{width:100%}.route-list{display:grid;gap:8px}.route-card{border:1px solid #dfe6e2;border-radius:10px;padding:11px;cursor:pointer;background:#fff;white-space:normal;overflow-wrap:anywhere}.route-card:hover{border-color:#176b4a}.route-card strong{font-size:13px;display:block}.route-card small{color:#65736e;font-size:11px}.line-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;flex:0 0 auto}.status{padding:10px;background:#fff6de;border:1px solid #f1dfaa;color:#6b5416;border-radius:9px;font-size:12px;line-height:1.5}.status.ok{background:#eaf7ef;border-color:#b9e2c6;color:#1d6335}#details{font-size:12px;line-height:1.6;overflow-wrap:anywhere}.legend{position:absolute;left:12px;bottom:22px;max-width:calc(100% - 24px);background:#fff;padding:9px 11px;border-radius:9px;box-shadow:0 1px 6px #0002;font-size:11px;color:#34443c;pointer-events:none}.maplibregl-popup-content{font:13px system-ui;line-height:1.45;border-radius:10px;max-width:min(260px,80vw);overflow-wrap:anywhere}.footer{font-size:10px;color:#7c8983;line-height:1.5}.fileinput{font-size:12px;width:100%}
+@media(max-width:760px){header{padding:12px 14px;align-items:flex-start}header h1{font-size:16px;line-height:1.3}header p{font-size:11px}.pill{font-size:10px;white-space:normal;max-width:124px;text-align:center}.app{display:flex;flex-direction:column;width:100%;height:auto;min-height:calc(100dvh - 66px)}.mapwrap{order:0;display:block;width:100%;height:46vh;height:46dvh;min-height:300px;max-height:520px;flex:0 0 auto}.mapwrap #map{width:100%;height:100%;min-height:300px}.sidebar{order:1;overflow:visible;width:100%;min-width:0;border-right:0;border-top:1px solid #dfe6e2;padding:14px}.section{margin-bottom:16px}.maplibregl-ctrl-top-right{top:8px;right:8px}.maplibregl-ctrl-bottom-right{bottom:34px;right:8px}.legend{left:8px;bottom:8px;font-size:10px;padding:7px 8px}.route-card{padding:12px}.route-card strong{font-size:14px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -32,20 +34,30 @@ let importedData=null, searchText=''; let autoRoadFeatures=[]; let roadHandlersA
 const map=new maplibregl.Map({container:'map',style:'https://tiles.openfreemap.org/styles/liberty',center:[90.408,23.775],zoom:10.5,attributionControl:true});
 map.addControl(new maplibregl.NavigationControl(),'top-right');
 map.addControl(new maplibregl.ScaleControl({maxWidth:110,unit:'metric'}),'bottom-right');
-map.on('load',async()=>{
- statusEl.textContent='Detailed street map loaded. Loading the first published BRTC pilot route…';
+// MapLibre needs an explicit resize when a responsive container changes dimensions.
+window.addEventListener('resize',()=>map.resize(),{passive:true});
+window.addEventListener('orientationchange',()=>setTimeout(()=>map.resize(),200),{passive:true});
+if('ResizeObserver' in window){const observer=new ResizeObserver(()=>map.resize());observer.observe(document.getElementById('map'));}
+map.on('load',()=>{
+ statusEl.textContent='Street map loaded. Loading the route and stop data…';
  statusEl.className='status';
- try{
-  const response=await fetch('./data/brtc-routes.geojson');
-  if(!response.ok)throw new Error('Bundled route dataset could not be loaded.');
-  const data=await response.json();
-  addData(data);
-  await addRoadPaths(data.features);
- }catch(e){
-  console.warn('Built-in BRTC data could not be loaded',e);
-  statusEl.textContent='Street map loaded, but the pilot route data did not load. You can still import a GeoJSON file below.';
-  statusEl.className='status';
- }
+ // Resize after mobile browsers finish applying viewport styles.
+ requestAnimationFrame(()=>map.resize());
+ setTimeout(()=>map.resize(),250);
+ fetch('./data/brtc-routes.geojson',{cache:'no-cache'})
+  .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
+  .then(data=>{
+   addData(data);
+   // Do not wait for the routing server before making the map usable.
+   statusEl.textContent='Loaded '+data.features.length+' stop/route records. Drawing colored road paths in the background…';
+   statusEl.className='status ok';
+   setTimeout(()=>addRoadPaths(data.features).catch(e=>{console.error(e);statusEl.textContent='Route stops are loaded, but some road lines could not be traced. The map remains usable; refresh later to retry.';statusEl.className='status';}),150);
+  })
+  .catch(e=>{
+   console.error('Built-in BRTC data could not be loaded',e);
+   statusEl.textContent='Street map loaded, but the route dataset could not be loaded. Check your connection and refresh.';
+   statusEl.className='status';
+  });
 });
 map.on('error',e=>{console.warn('Map error',e);statusEl.textContent='Map tiles may be temporarily unavailable. Check your internet connection and reload.';statusEl.className='status';});
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
@@ -128,13 +140,19 @@ async function addRoadPaths(features){
  }
  const routeEntries=[...groups.entries()].map(([id,points])=>[id,points.sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order))]).filter(([id,points])=>points.length>=2);
  const roadFeatures=[];
+ // Keep the map usable on mobile even if an external router is slow.
+ statusEl.textContent='Preparing '+routeEntries.length+' colored routes. You can already zoom, pan and select stops.';
+ statusEl.className='status ok';
  const routeOne=async([routeId,points])=>{
   const first=points[0], last=points[points.length-1], p=first.properties||{};
   const coords=points.map(f=>f.geometry.coordinates);
   const coordsText=coords.map(c=>c[0]+','+c[1]).join(';');
   const url='https://router.project-osrm.org/route/v1/driving/'+coordsText+'?overview=full&geometries=geojson&steps=false';
   try{
-   const res=await fetch(url);
+   const controller=new AbortController();
+   const timeout=setTimeout(()=>controller.abort(),12000);
+   let res;
+   try{res=await fetch(url,{signal:controller.signal});}finally{clearTimeout(timeout);}
    if(!res.ok)throw new Error('Road-routing service returned HTTP '+res.status);
    const result=await res.json();
    if(result.code!=='Ok'||!result.routes||!result.routes.length)throw new Error(result.message||'No road route found');
@@ -165,11 +183,13 @@ async function addRoadPaths(features){
   }
  };
  let successCount=0, errors=[];
- // Use a small concurrency limit to avoid flooding the public demonstration router.
- for(let i=0;i<routeEntries.length;i+=3){
-  const batch=routeEntries.slice(i,i+3);
+ // Two requests at once is gentler on the free public routing service and mobile networks.
+ for(let i=0;i<routeEntries.length;i+=2){
+  const batch=routeEntries.slice(i,i+2);
   const results=await Promise.all(batch.map(async entry=>{try{await routeOne(entry);successCount++;return null;}catch(e){return e.message;}}));
   errors.push(...results.filter(Boolean));
+  // Let the browser paint between batches, especially on lower-memory phones.
+  await new Promise(resolve=>setTimeout(resolve,150));
  }
  roadFeatures.sort((a,b)=>String(a.properties.route_id).localeCompare(String(b.properties.route_id)));
  autoRoadFeatures=roadFeatures;
