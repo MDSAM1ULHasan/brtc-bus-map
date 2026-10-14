@@ -3467,8 +3467,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          90.4875,
-          23.715
+          90.49035,
+          23.72001
         ]
       },
       "properties": {
@@ -3486,8 +3486,11 @@
         "official_source": "BRTC Citizen Charter / Passenger Transport Service pages",
         "official_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "source_status": "Listed in BRTC publication; present-day operation not independently confirmed",
-        "route_geometry_status": "Road path will be routed through the listed/approximate stop coordinates. It is not an official GPS trace.",
-        "stop_coordinate_status": "Coordinate is an approximate map waypoint for route tracing and should be checked against the exact boarding point."
+        "route_geometry_status": "Route line is routed through listed stop waypoints; not an official BRTC GPS trace.",
+        "stop_coordinate_status": "Mapped bus-stop coordinate from the OpenStreetMap feature for Staff Quarter Bus Stop. Confirm the exact BRTC boarding point locally.",
+        "coordinate_source": "OpenStreetMap-mapped Staff Quarter Bus Stop, located at Demra–Ranimohol–Chittagong Road",
+        "coordinate_source_url": "https://mapcarta.com/N5217683632",
+        "coordinate_source_osm_id": "node 5217683632"
       }
     },
     {
