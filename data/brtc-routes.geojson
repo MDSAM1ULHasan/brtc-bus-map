@@ -3051,7 +3051,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "07:45",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3083,7 +3088,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:30",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3121,7 +3131,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:45",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3159,7 +3174,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:05",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3191,7 +3211,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:15",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3229,7 +3254,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:20",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3267,7 +3297,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "07:50",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3305,7 +3340,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:00",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3343,7 +3383,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:15",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3381,7 +3426,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:55",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3413,7 +3463,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:40",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3451,7 +3506,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:45",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3527,7 +3587,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:35",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3565,7 +3630,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:50",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3603,7 +3673,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:00",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3641,7 +3716,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:15",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3673,7 +3753,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:25",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3711,7 +3796,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:40",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3749,7 +3839,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:10",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3781,7 +3876,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:30",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3819,7 +3919,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:55",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3857,7 +3962,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:25",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3895,7 +4005,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:45",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3933,7 +4048,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "10:00",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -3965,7 +4085,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:20",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4003,7 +4128,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:55",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4041,7 +4171,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:35",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4073,7 +4208,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:50",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4111,7 +4251,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:55",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4149,7 +4294,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "10:00",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4181,7 +4331,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:45",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4219,7 +4374,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:05",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4257,7 +4417,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:25",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4295,7 +4460,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:40",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4333,7 +4503,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:50",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4365,7 +4540,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:55",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4404,7 +4584,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:15",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4436,7 +4621,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:30",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4474,7 +4664,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "08:50",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4506,7 +4701,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:00",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
@@ -4538,7 +4738,12 @@
         "route_stop_verified": true,
         "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
         "route_stop_status": "The stop name is included in the BRTC-published route/timetable information. The exact BRTC pickup side/platform should still be confirmed.",
-        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
+        "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops.",
+        "scheduled_time_local": "09:30",
+        "schedule_period": "Morning outbound (published BRTC timetable)",
+        "schedule_time_source": "BRTC-published route/timetable entry; current operation has not been independently reconfirmed.",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "live_arrival_data": false
       }
     },
     {
