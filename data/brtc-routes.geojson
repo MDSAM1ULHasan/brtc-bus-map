@@ -1776,9 +1776,9 @@
         "coordinate_osm_id": "node 12014834174",
         "coordinate_osm_feature_name": "Mohammadpur (BRTC) Bus stop",
         "coordinate_match_status": "Mapped stop at the BRTC depot access; not the depot polygon centroid. Verify the exact departure bay.",
-        "route_stop_verified": false,
-        "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_verified": true,
+        "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "route_stop_status": "This stop name appears in the BRTC-published timetable for this route; exact mapped boarding side/platform still needs confirmation.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1810,7 +1810,7 @@
         "coordinate_match_status": "Exact designated stop/terminal has not been identified yet; deliberately hidden from map until verified.",
         "route_stop_verified": false,
         "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_status": "This stop was not verified as part of this route.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1846,9 +1846,9 @@
         "coordinate_osm_id": "node 12012285851",
         "coordinate_osm_feature_name": "Dhanmondi 15 Bus Stop",
         "coordinate_match_status": "Exact named OSM bus-stop feature; confirm route-specific side/platform.",
-        "route_stop_verified": false,
-        "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_verified": true,
+        "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "route_stop_status": "This stop name appears in the BRTC-published timetable for this route; exact mapped boarding side/platform still needs confirmation.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1880,7 +1880,7 @@
         "coordinate_match_status": "Exact designated stop/terminal has not been identified yet; deliberately hidden from map until verified.",
         "route_stop_verified": false,
         "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_status": "This stop was not verified as part of this route.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1918,7 +1918,7 @@
         "coordinate_match_status": "Exact named OSM bus-stop feature; confirm route-specific side/platform.",
         "route_stop_verified": false,
         "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_status": "This stop was not verified as part of this route.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1956,7 +1956,7 @@
         "coordinate_match_status": "Mapped bus-stop on the Shahbag corridor; exact BRTC boarding side is not independently confirmed.",
         "route_stop_verified": false,
         "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_status": "This stop was not verified as part of this route.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -1988,7 +1988,7 @@
         "coordinate_match_status": "Exact designated stop/terminal has not been identified yet; deliberately hidden from map until verified.",
         "route_stop_verified": false,
         "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_status": "This stop was not verified as part of this route.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
@@ -2024,9 +2024,9 @@
         "coordinate_osm_id": "node 12033095971",
         "coordinate_osm_feature_name": "Motijheel Bus stop",
         "coordinate_match_status": "Exact OSM bus-stop feature in Motijheel; exact BRTC pickup bay not independently confirmed.",
-        "route_stop_verified": false,
-        "route_stop_verification_source": null,
-        "route_stop_status": "This stop was previously an approximate waypoint; its association with this specific BRTC route is not confirmed.",
+        "route_stop_verified": true,
+        "route_stop_verification_source": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "route_stop_status": "This stop name appears in the BRTC-published timetable for this route; exact mapped boarding side/platform still needs confirmation.",
         "road_geometry_status": "No official BRTC GPS track is available in this dataset. Road lines, if generated, must be labelled as estimates through only verified listed stops."
       }
     },
