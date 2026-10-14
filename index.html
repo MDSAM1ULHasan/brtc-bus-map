@@ -17,7 +17,7 @@
 <header><div><h1>🚌 BRTC Bus Routes & Timetables</h1><p>বাংলাদেশের বাস রুট ম্যাপ · Bangladesh</p></div><span class="pill">Free interactive map · Preview</span></header>
 <div class="app">
 <aside class="sidebar">
-<div class="section"><h2>Find a route / রুট খুঁজুন</h2><input id="search" class="field" placeholder="Search route, terminal or stop…"><div class="muted">Search loaded BRTC routes and terminal names. The first pilot route is included; more verified routes will be added.</div></div>
+<div class="section"><h2>Find a route / রুট খুঁজুন</h2><input id="search" class="field" placeholder="Search route, terminal or stop…"><div class="muted">Search the loaded Dhaka route and stop dataset. Route operation and stop locations still need verification.</div></div>
 <div class="section"><h2>Map data / ম্যাপের তথ্য</h2><div class="status" id="status">Base map is loading. Import a GeoJSON file to add verified routes and stops.</div></div>
 <div class="section"><h2>Import route data</h2><p class="muted">Upload a GeoJSON FeatureCollection with LineString/MultiLineString routes and Point stop markers. Properties such as route_name, stop_name, direction, departure_time, service_days and source will appear in popups.</p><input id="file" class="fileinput" type="file" accept=".geojson,.json,application/geo+json,application/json"><button id="import" class="btn full" style="margin-top:10px">Import GeoJSON</button></div>
 <div class="section"><h2>Dhaka city routes / ঢাকা শহরের রুট</h2><div class="muted" style="margin-bottom:8px">Each route has a separate color. The listed route data is from BRTC publications; some current operations may have changed.</div><div class="route-list" id="routes"><div class="muted">Loading BRTC route records…</div></div></div>
@@ -44,7 +44,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson',{cache:'no-cache'})
+ fetch('./data/brtc-routes.geojson')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
