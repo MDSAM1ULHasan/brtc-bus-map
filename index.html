@@ -34,7 +34,7 @@
 <div class="section"><h2>Next steps</h2><div class="muted">1. Import verified BRTC route geometry and stops.<br>2. Add official departure schedules and service days.<br>3. Check that each route follows the actual bus path.<br>4. Enable route search and journey planning after the dataset is complete.</div></div>
 <div class="footer">Map tiles: OpenFreeMap. Geographic data: © OpenStreetMap contributors. Only mapped stop features are shown. A colored pin means the stop name appears in the BRTC route schedule; a gray pin means the route-to-stop association is not confirmed. Lines are estimates, not GPS tracks.</div>
 </aside>
-<main class="mapwrap"><div id="map"></div><div class="legend"><b>Stop accuracy / স্টপের নির্ভুলতা</b><br>Colored pins = BRTC-listed stop name<br>Gray pins = mapped stop; route link unverified<br>Dashed lines = estimated roads, not GPS traces</div>
+<main class="mapwrap"><div id="map"></div><div class="legend"><b>Route segments / রুটের অংশ</b><br>Colored dashed lines = estimated road path between adjacent verified stop records<br>Gaps mean a stop/connection is still unverified<br>Not live GPS</div>
 <section id="transitSheet" class="transit-sheet" hidden aria-label="Bus stop departures and trip timetable">
  <div class="sheet-handle"></div>
  <div class="sheet-header"><div><div class="sheet-title" id="sheetTitle">Bus stop</div><div class="sheet-subtitle" id="sheetSubtitle">Scheduled departures</div></div><button class="sheet-close" id="closeTransitSheet" aria-label="Close timetable">×</button></div>
@@ -60,7 +60,7 @@ map.on('load',()=>{
  // Resize after mobile browsers finish applying viewport styles.
  requestAnimationFrame(()=>map.resize());
  setTimeout(()=>map.resize(),250);
- fetch('./data/brtc-routes.geojson?v=20261014-transit-panel-v1')
+ fetch('./data/brtc-routes.geojson?v=20261014-partial-segments-v1')
   .then(response=>{if(!response.ok)throw new Error('Route data request failed: HTTP '+response.status);return response.json();})
   .then(data=>{
    addData(data);
@@ -101,7 +101,7 @@ function showRouteCards(features){
  features.forEach((f,i)=>{
   const p=f.properties||{};
   const key=p.route_id||('feature-'+i);
-  if(!grouped.has(key))grouped.set(key,{key,features:[],points:[],namedStops:[],line:null,title:p.route_name||p.name||featureTitle(f),bn:p.route_name_bn||'',color:p.color||'#168257',type:p.route_type||'',schedule:p.timetable_note||p.schedule_note||'',sourceStatus:p.source_status||p.schedule_status||''});
+  if(!grouped.has(key))grouped.set(key,{key,features:[],points:[],namedStops:[],line:null,lineCount:0,title:p.route_name||p.name||featureTitle(f),bn:p.route_name_bn||'',color:p.color||'#168257',type:p.route_type||'',schedule:p.timetable_note||p.schedule_note||'',sourceStatus:p.source_status||p.schedule_status||''});
   const g=grouped.get(key);g.features.push(f);
   if(p.route_name)g.title=p.route_name;
   if(p.route_name_bn)g.bn=p.route_name_bn;
@@ -112,7 +112,7 @@ function showRouteCards(features){
   if(p.source_status)g.sourceStatus=p.source_status;
   if(p.stop_type)g.namedStops.push(f);
   if(f.geometry?.type==='Point'&&p.coordinate_verified===true)g.points.push(f);
-  if(f.geometry?.type==='LineString'||f.geometry?.type==='MultiLineString')g.line=f;
+  if(f.geometry?.type==='LineString'||f.geometry?.type==='MultiLineString'){g.line=f;g.lineCount++;}
  });
  const items=[...grouped.values()];
  const boundsFor=g=>{
@@ -133,7 +133,7 @@ function showRouteCards(features){
    const el=document.createElement('button');el.className='route-card';el.style.textAlign='left';el.style.width='100%';
    el.innerHTML='<strong><span class="line-dot" style="background:'+esc(x.color)+'"></span>'+esc(x.title)+'</strong>'+
      (x.bn?'<small style="display:block;margin:4px 0">'+esc(x.bn)+'</small>':'')+
-     '<small>'+esc(x.type||'BRTC listed route')+' · '+x.points.length+'/'+x.namedStops.length+' stop names mapped · '+scheduleNames+' schedule-listed · '+(x.line?'estimated road line':'line hidden until stops are verified')+'</small>';
+     '<small>'+esc(x.type||'BRTC listed route')+' · '+x.points.length+'/'+x.namedStops.length+' stop names mapped · '+scheduleNames+' schedule-listed · '+(x.lineCount?x.lineCount+' partial road segment(s)':'no verified adjacent segment yet')+'</small>';
    el.onclick=()=>{
     const detail=x.line||(x.points.find(p=>(p.properties||{}).stop_type==='origin'))||x.points[0]||x.features[0];
     if(detail)showDetails(detail);
@@ -263,34 +263,34 @@ async function addRoadPaths(features){
  const groups=new Map();
  for(const f of features){
   const p=f.properties||{};
-  // Include unlocated stop-name records too: an unverified stop must block route tracing,
-  // not silently disappear and cause the router to skip it.
   if(!p.route_id||!Number.isFinite(Number(p.route_order)))continue;
   if(!groups.has(p.route_id))groups.set(p.route_id,[]);
   groups.get(p.route_id).push(f);
  }
- const routeEntries=[...groups.entries()]
-  .map(([id,stops])=>[id,stops.sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order))])
-  .filter(([id,stops])=>
-   stops.length>=2 &&
-   stops[0].properties?.stop_type==='origin' &&
-   stops[stops.length-1].properties?.stop_type==='destination' &&
-   stops.every(f=>f.geometry?.type==='Point' && f.properties?.coordinate_verified===true && f.properties?.route_stop_verified===true)
-  );
+ const sortedGroups=[...groups.entries()].map(([id,stops])=>[id,stops.sort((a,b)=>Number(a.properties.route_order)-Number(b.properties.route_order))]);
+ const eligibleSegments=[];
+ for(const [routeId,stops] of sortedGroups){
+  for(let i=0;i<stops.length-1;i++){
+   const from=stops[i],to=stops[i+1],fp=from.properties||{},tp=to.properties||{};
+   // Only draw between adjacent stop records with mapped coordinates and a published BRTC route association.
+   // Missing or unverified stops break the line; don't skip over them and invent a connection.
+   if(from.geometry?.type!=='Point'||to.geometry?.type!=='Point')continue;
+   if(fp.coordinate_verified!==true||tp.coordinate_verified!==true)continue;
+   if(fp.route_stop_verified!==true||tp.route_stop_verified!==true)continue;
+   eligibleSegments.push({routeId,from,to,routeProps:fp});
+  }
+ }
  const roadFeatures=[];
  const mappedStopCount=features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified===true&&f.geometry?.type==='Point').length;
  const hiddenStopCount=features.filter(f=>f.properties?.stop_type&&f.properties?.coordinate_verified!==true).length;
- // Keep the map usable on mobile even if an external router is slow.
- statusEl.textContent='Checking '+groups.size+' routes. Only routes with every stop mapped and listed in the BRTC route information can receive an estimated road line.';
+ statusEl.textContent='Drawing '+eligibleSegments.length+' partial road segment(s). Stops with missing or unverified locations create gaps.';
  statusEl.className='status ok';
- const routeOne=async([routeId,points])=>{
-  const first=points[0], last=points[points.length-1], p=first.properties||{};
-  const coords=points.map(f=>f.geometry.coordinates);
-  const coordsText=coords.map(c=>c[0]+','+c[1]).join(';');
+ const routeOne=async(segment)=>{
+  const {routeId,from,to}=segment,fp=from.properties||{},tp=to.properties||{};
+  const coordsText=[from.geometry.coordinates,to.geometry.coordinates].map(c=>c[0]+','+c[1]).join(';');
   const url='https://router.project-osrm.org/route/v1/driving/'+coordsText+'?overview=full&geometries=geojson&steps=false';
+  const controller=new AbortController(), timeout=setTimeout(()=>controller.abort(),12000);
   try{
-   const controller=new AbortController();
-   const timeout=setTimeout(()=>controller.abort(),12000);
    let res;
    try{res=await fetch(url,{signal:controller.signal});}finally{clearTimeout(timeout);}
    if(!res.ok)throw new Error('Road-routing service returned HTTP '+res.status);
@@ -298,45 +298,41 @@ async function addRoadPaths(features){
    if(result.code!=='Ok'||!result.routes||!result.routes.length)throw new Error(result.message||'No road route found');
    const route=result.routes[0];
    roadFeatures.push({type:'Feature',geometry:route.geometry,properties:{
-    route_id:routeId,
-    route_name:p.route_name||routeId,
-    route_name_bn:p.route_name_bn||'',
-    color:p.color||'#168257',
-    route_type:p.route_type||'BRTC route',
-    feature_type:'automatically_generated_road_path',
-    road_path_status:'Estimated road-network path routed through listed stop waypoints. This is NOT a verified BRTC GPS trace or an officially approved bus alignment.',
+    route_id:routeId, route_name:fp.route_name||routeId, route_name_bn:fp.route_name_bn||'',
+    color:fp.color||'#168257', route_type:fp.route_type||'BRTC route',
+    feature_type:'partial_road_routing_estimate', partial_segment:true,
+    segment_start_stop:fp.stop_name_en||fp.stop_name||'',
+    segment_end_stop:tp.stop_name_en||tp.stop_name||'',
+    segment_start_stop_bn:fp.stop_name||'', segment_end_stop_bn:tp.stop_name||'',
+    road_path_status:'Partial road-routing estimate between adjacent mapped stop records. Segments are intentionally omitted where stop location or route association is unverified. Not an official BRTC GPS trace.',
     road_distance_km_estimated:Math.round(route.distance/100)/10,
     road_duration_minutes_estimated:Math.round(route.duration/60),
-    stops_count:points.length,
-    stop_sequence:points.map(f=>(f.properties||{}).stop_name_en||(f.properties||{}).stop_name||'').join(' → '),
-    timetable_note:p.timetable_note||p.schedule_note||'No full timetable in retrieved source; verify with BRTC.',
-    published_distance_km:p.published_distance_km||'',
-    official_source:p.official_source||'BRTC published route listing',
-    official_source_url:p.official_source_url||'https://brtc.gov.bd/',
-    source_status:p.source_status||'Listed route; present-day operation has not been independently confirmed',
-    color_legend:'Color uniquely identifies this route on the map.',
+    timetable_note:fp.timetable_note||tp.timetable_note||'Verify schedule with BRTC.',
+    official_source:fp.official_source||'BRTC published route listing',
+    official_source_url:fp.official_source_url||'https://brtc.gov.bd/',
+    source_status:'The stop names are linked to a published entry; this road segment is a routing estimate, not an approved bus alignment.',
+    coordinate_source_from:fp.coordinate_source_url||'',
+    coordinate_source_to:tp.coordinate_source_url||'',
     routing_service:'Public OSRM demo router; estimated driving path'
    }});
   }catch(e){
-   console.warn('Could not create road line for '+routeId,e);
-   throw new Error((p.route_name||routeId)+': '+e.message);
+   console.warn('Could not create segment '+routeId+' '+(fp.stop_name_en||'')+' -> '+(tp.stop_name_en||''),e);
+   throw e;
   }
  };
- let successCount=0, errors=[];
- // Two requests at once is gentler on the free public routing service and mobile networks.
- for(let i=0;i<routeEntries.length;i+=2){
-  const batch=routeEntries.slice(i,i+2);
-  const results=await Promise.all(batch.map(async entry=>{try{await routeOne(entry);successCount++;return null;}catch(e){return e.message;}}));
+ let successCount=0,errors=[];
+ for(let i=0;i<eligibleSegments.length;i+=2){
+  const batch=eligibleSegments.slice(i,i+2);
+  const results=await Promise.all(batch.map(async s=>{try{await routeOne(s);successCount++;return null;}catch(e){return e.message||'routing failed';}}));
   errors.push(...results.filter(Boolean));
-  // Let the browser paint between batches, especially on lower-memory phones.
-  await new Promise(resolve=>setTimeout(resolve,150));
+  await new Promise(resolve=>setTimeout(resolve,120));
  }
  roadFeatures.sort((a,b)=>String(a.properties.route_id).localeCompare(String(b.properties.route_id)));
  autoRoadFeatures=roadFeatures;
  if(map.getLayer('brtc-auto-lines'))map.removeLayer('brtc-auto-lines');
  if(map.getSource('brtc-auto-road-data'))map.removeSource('brtc-auto-road-data');
  map.addSource('brtc-auto-road-data',{type:'geojson',data:{type:'FeatureCollection',features:roadFeatures}});
- map.addLayer({id:'brtc-auto-lines',type:'line',source:'brtc-auto-road-data',paint:{'line-color':['coalesce',['get','color'],'#13845b'],'line-width':['interpolate',['linear'],['zoom'],8,2.5,12,4.5,15,6],'line-opacity':0.9,'line-dasharray':[2,1]}},map.getLayer('brtc-points')?'brtc-points':undefined);
+ map.addLayer({id:'brtc-auto-lines',type:'line',source:'brtc-auto-road-data',paint:{'line-color':['coalesce',['get','color'],'#13845b'],'line-width':['interpolate',['linear'],['zoom'],8,3,12,5,15,6],'line-opacity':0.98,'line-dasharray':[2,1]}},map.getLayer('brtc-points')?'brtc-points':undefined);
  if(!roadHandlersAdded){
   map.on('click','brtc-auto-lines',e=>{const f=e.features[0];openRouteTimeline(f.properties?.route_id);});
   map.on('mouseenter','brtc-auto-lines',()=>map.getCanvas().style.cursor='pointer');
@@ -344,13 +340,9 @@ async function addRoadPaths(features){
   roadHandlersAdded=true;
  }
  showRouteCards([...features,...roadFeatures]);
- if(successCount){
-  statusEl.textContent='Reviewed '+groups.size+' routes: '+mappedStopCount+' mapped stop records shown and '+hiddenStopCount+' unverified stop locations hidden. Generated '+successCount+' estimated road line(s); '+(groups.size-routeEntries.length)+' route(s) have unverified stops, so their line is withheld. '+(errors.length?errors.length+' additional line request(s) failed. ':'')+'A dashed line is an estimate, not an official BRTC GPS trace.';
-  statusEl.className=errors.length?'status':'status ok';
- }else{
-  statusEl.textContent='No road lines could be created. The stop names remain listed, but route lines are hidden until all route stop locations and route associations can be verified.';
-  statusEl.className='status';
- }
+ const routeIdsWithSegments=new Set(roadFeatures.map(f=>f.properties.route_id)).size;
+ statusEl.textContent='Mapped stop records: '+mappedStopCount+'. Unverified stop locations hidden: '+hiddenStopCount+'. Generated '+successCount+'/'+eligibleSegments.length+' partial road segment(s) across '+routeIdsWithSegments+' route(s). Gaps are intentional where the next stop is unverified. Dashed colored lines are estimates, not GPS tracks.'+(errors.length?' Some segments could not be routed ('+errors.length+').':'');
+ statusEl.className=successCount?'status ok':'status';
 }
 
 document.getElementById('import').onclick=async()=>{const f=document.getElementById('file').files[0];if(!f){statusEl.textContent='Choose a GeoJSON file first.';return;}try{const data=JSON.parse(await f.text());addData(data);await addRoadPaths(data.features);}catch(e){statusEl.textContent='Import failed: '+e.message;statusEl.className='status';}};
