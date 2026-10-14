@@ -1,0 +1,62 @@
+{
+  "type": "FeatureCollection",
+  "name": "BRTC pilot route — Dhaka to Faridpur",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          90.41035,
+          23.72276
+        ]
+      },
+      "properties": {
+        "route_id": "brtc-dhaka-faridpur",
+        "route_name": "ঢাকা–ফরিদপুর / Dhaka–Faridpur",
+        "stop_type": "origin",
+        "stop_name": "গুলিস্তান CBS-2",
+        "stop_name_en": "BRTC CBS-2 Bus Terminal, Fulbaria, Gulistan",
+        "direction": "Outbound: Dhaka → Faridpur",
+        "departure_first_time": "06:30",
+        "departure_frequency": "Every 1 hour (as published)",
+        "departure_note_bn": "সকাল ৬:৩০ থেকে প্রতি ১ ঘণ্টা পরপর (প্রকাশিত তথ্য; বর্তমান সময়সূচি যাচাই করুন)",
+        "published_distance_km": 110,
+        "schedule_source": "BRTC passenger transport service / Citizen Charter page",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "schedule_status": "Published BRTC table; current operations not independently reconfirmed",
+        "coordinate_source": "OpenStreetMap-based Mapcarta place entry",
+        "coordinate_source_url": "https://mapcarta.com/N11786440376",
+        "geometry_status": "The road line will be automatically generated from the road network. It is not a verified BRTC GPS/route trace."
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          89.815236,
+          23.592473
+        ]
+      },
+      "properties": {
+        "route_id": "brtc-dhaka-faridpur",
+        "route_name": "ঢাকা–ফরিদপুর / Dhaka–Faridpur",
+        "stop_type": "destination",
+        "stop_name": "ফরিদপুর নতুন বাস টার্মিনাল",
+        "stop_name_en": "Faridpur New Bus Terminal",
+        "direction": "Outbound: Dhaka → Faridpur",
+        "arrival_first_time": "08:30",
+        "arrival_frequency": "Every 1 hour (as published)",
+        "arrival_note_bn": "সকাল ৮:৩০ থেকে প্রতি ১ ঘণ্টা পরপর (প্রকাশিত তথ্য; বর্তমান সময়সূচি যাচাই করুন)",
+        "published_distance_km": 110,
+        "schedule_source": "BRTC passenger transport service / Citizen Charter page",
+        "schedule_source_url": "https://brtc.gov.bd/site/page/5001091c-e4a6-4949-a6bc-e70bae7bfd63/Citizen",
+        "schedule_status": "Published BRTC table; current operations not independently reconfirmed",
+        "coordinate_source": "Geotagged photograph of Faridpur New Bus Terminal",
+        "coordinate_source_url": "https://commons.wikimedia.org/wiki/File:Faridpur_new_bus_terminal.jpg",
+        "geometry_status": "The road line will be automatically generated from the road network. It is not a verified BRTC GPS/route trace."
+      }
+    }
+  ]
+}
